@@ -33,7 +33,4 @@ Inclui CRUD completo para Aluno, Professor, Disciplina e Matrícula, pesquisas c
 - Controllers, Models, Data (DbContext), Services, Repositories e Diagrams (Mermaid).
 
 ## Publicação (Cloud)
-- Pode ser publicada no Azure App Service. Após o deploy, disponibilize o link do Swagger público no seu repositório.
-
-## Observações
-- Este projeto é base acadêmica. Ajustes podem ser feitos conforme a necessidade do grupo.
+- 
