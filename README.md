@@ -7,15 +7,15 @@
 - Miguel Ruan de Souza — RM551239  
 
 ## Descrição
-API RESTful desenvolvida em **ASP.NET Core 8** com **Entity Framework Core (SQLite)** e documentada via **Swagger**.  
-O projeto implementa um **CRUD completo** para Aluno, Professor, Disciplina e Matrícula,  
-inclui **pesquisas com LINQ**, e integra dados externos por meio da **API pública do IBGE**.
+API RESTful desenvolvida em ASP.NET Core 8 com Entity Framework Core (SQLite) e documentada via Swagger.  
+O projeto implementa um CRUD completo para Aluno, Professor, Disciplina e Matrícula,  
+inclui pesquisas com LINQ, e integra dados externos por meio da API pública do IBGE.
 
 ---
 
-## ⚙️ Como executar (localmente)
+## Como executar (localmente)
 
-1. Certifique-se de ter o **.NET 8 SDK** instalado.  
+1. Certifique-se de ter o .NET 8 SDK instalado.  
 2. No diretório raiz do projeto, execute:
    ```bash
    dotnet restore
@@ -29,29 +29,29 @@ inclui **pesquisas com LINQ**, e integra dados externos por meio da **API públi
 
 ---
 
-## 🌐 Publicação (Azure Cloud)
+## Publicação (Azure Cloud)
 
-O projeto está publicado no **Azure App Service** e pode ser acessado diretamente via Swagger:
+O projeto está publicado no Azure App Service e pode ser acessado diretamente via Swagger:
 
-🔗 [Acessar Swagger na Nuvem](https://swaggerschoolapi-3espf-ead4geaqfabjdaa4.brazilsouth-01.azurewebsites.net/swagger)
+[Acessar Swagger na Nuvem](https://swaggerschoolapi-3espf-ead4geaqfabjdaa4.brazilsouth-01.azurewebsites.net/swagger)
 
 ---
 
-## 📚 Endpoints Principais
+## Endpoints Principais
 
 | Método | Rota | Descrição |
 |--------|------|------------|
-| `GET` | `/api/alunos` | Lista todos os alunos |
-| `GET` | `/api/alunos/search?nome=ana` | Pesquisa com LINQ |
-| `GET` | `/api/alunos/ranking-matriculas` | Ranking de matrículas (LINQ) |
-| `GET` | `/api/professores` | Lista professores |
-| `GET` | `/api/disciplinas` | Lista disciplinas |
-| `GET` | `/api/matriculas` | Lista matrículas |
-| `GET` | `/api/integracoes/ibge/estados` | Integração com API externa (IBGE) |
+| GET | /api/alunos | Lista todos os alunos |
+| GET | /api/alunos/search?nome=ana | Pesquisa com LINQ |
+| GET | /api/alunos/ranking-matriculas | Ranking de matrículas (LINQ) |
+| GET | /api/professores | Lista professores |
+| GET | /api/disciplinas | Lista disciplinas |
+| GET | /api/matriculas | Lista matrículas |
+| GET | /api/integracoes/ibge/estados | Integração com API externa (IBGE) |
 
 ---
 
-## 🧱 Estrutura do Projeto
+## Estrutura do Projeto
 ```
 SwaggerSchoolAPI/
  ├── Controllers/      # Endpoints da API
@@ -59,14 +59,15 @@ SwaggerSchoolAPI/
  ├── Data/             # Contexto e migrations do Entity Framework
  ├── Services/         # Lógica de negócio e consultas LINQ
  ├── Repositories/     # Acesso e persistência de dados
- ├── Diagrams/         # Diagramas de arquitetura (Mermaid / PNG)
+ ├── Diagrams/         # Diagramas de arquitetura e DER
+ │    └── chart.png
  └── README.md
 ```
 
 ---
 
-## 🧩 Arquitetura
-O projeto segue o padrão em **camadas**:
+## Arquitetura
+O projeto segue o padrão em camadas:
 ```
 Controllers → Services → Repositories → Data (EF Core)
                            ↓
@@ -75,21 +76,26 @@ Controllers → Services → Repositories → Data (EF Core)
 
 ---
 
-## 📄 Documentação e Diagramas
-Os diagramas de arquitetura foram desenvolvidos em **Mermaid** e exportados em **PNG**:
+## Diagrama Entidade-Relacionamento (DER)
+
+O diagrama abaixo representa as entidades e relacionamentos principais do sistema:
+
+![Diagrama DER](Diagrams/chart.png)
+
+---
+
+## Documentação e Diagramas
+Os diagramas de arquitetura foram desenvolvidos em Mermaid e exportados em PNG:
 1. Arquitetura lógica  
 2. Implantação na nuvem (Azure)  
 3. Componentes internos  
 4. Fluxo de requisição  
 5. DER (Entidades e Relacionamentos)
 
-Todos estão disponíveis na pasta `/Diagrams`.
+Todos estão disponíveis na pasta /Diagrams.
 
 ---
 
-## 📢 Observações finais
-- Código estruturado e versionado no GitHub.  
+## Observações finais
 - Swagger habilitado em ambiente de produção (Azure).  
 - Deploy contínuo via GitHub Actions.
-
----
