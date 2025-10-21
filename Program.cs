@@ -1,29 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using SwaggerSchoolAPI.Data;
-using SwaggerSchoolAPI; // necessário para AddProjectServices()
+using SwaggerSchoolAPI; // garante o AddProjectServices()
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
+// Services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// DbContext (SQLite by default)
 builder.Services.AddDbContext<AppDbContext>(opts =>
-    opts.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
-
-builder.Services.AddHttpClient(); // for external API calls
+    opts.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpClient();
+builder.Services.AddProjectServices();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// SEM condicional: habilita Swagger também em produção
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "SwaggerSchoolAPI v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseHttpsRedirection();
 app.UseRouting();
@@ -31,7 +29,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Root redireciona pro Swagger para evitar 404 no "/"
+app.MapGet("/", () => Results.Redirect("/swagger"));
+
 app.Run();
+
 
 // register repositories and services
 builder.Services.AddProjectServices();
